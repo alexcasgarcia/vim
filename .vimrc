@@ -65,6 +65,7 @@ set backspace=indent,eol,start  " Allow backspacing over autoindent, line breaks
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set smartindent
 " }}}
 
 " 17. Mapping {{{
@@ -103,7 +104,7 @@ nnoremap <F2> :set invpaste paste?<CR>
 map Y y$
 
 " Map <C-e> to execute the current file as a python script
-nnoremap <silent> <F5> :!clear;python %<CR>
+nnoremap <silent> <F5> :w<CR>:!clear;python %<CR>
 
 " Map <leader><space> to unhighlight terms found from a search
 nnoremap <leader><space> :nohlsearch<CR>
@@ -129,6 +130,7 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " Map <leader>sv to source the vimrc file 
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+nnoremap <leader>r yiw:%s/<c-r>"/
 " }}}
 
 " 18. Reading and Writing Files {{{
