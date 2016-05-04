@@ -23,7 +23,7 @@ set nostartofline
 " }}}
 
 " 4. Displaying Text {{{
-set number                      " Display line numbers on the left
+set relativenumber                      " Display line numbers on the left
 " Set the command window height to 2 lines, to avoid many cases of having to
 "  press <Enter> to continue"
 set cmdheight=2
@@ -109,6 +109,11 @@ nnoremap <silent> <F5> :w<CR>:!clear;python %<CR>
 " Map <leader><space> to unhighlight terms found from a search
 nnoremap <leader><space> :nohlsearch<CR>
 
+" Map <leader><c><o> to count occurrences of the current word
+nnoremap <leader>co yiw:%s/<c-r>"//gn<CR>
+" Map <leader><g><o> to count occurrences of the current word
+nnoremap <leader>co yiw:%g/<c-r>"/p<CR>
+
 "function to toggle between relative and absolute numbering
 function! NumberToggle()
     if(&relativenumber == &number)
@@ -131,6 +136,13 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 nnoremap <leader>r yiw:%s/<c-r>"/
+
+" Allow saving of files as sudo when I forgot to start vim using sudo
+cnoremap w!! w !sudo tee >/dev/null %
+
+" Allow typos for writing
+cnoremap W w
+cnoremap Q q
 " }}}
 
 " 18. Reading and Writing Files {{{
