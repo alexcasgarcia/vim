@@ -66,6 +66,7 @@ set backspace=indent,eol,start  " Allow backspacing over autoindent, line breaks
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set smartindent
 " }}}
 
 " 17. Mapping {{{
@@ -104,10 +105,15 @@ nnoremap <F2> :set invpaste paste?<CR>
 map Y y$
 
 " Map <C-e> to execute the current file as a python script
-nnoremap <silent> <F5> :!clear;python %<CR>
+nnoremap <silent> <F5> :w<CR>:!clear;python %<CR>
 
 " Map <leader><space> to unhighlight terms found from a search
 nnoremap <leader><space> :nohlsearch<CR>
+
+" Map <leader><c><o> to count occurrences of the current word
+nnoremap <leader>co yiw:%s/<c-r>"//gn<CR>
+" Map <leader><g><o> to count occurrences of the current word
+nnoremap <leader>co yiw:%g/<c-r>"/p<CR>
 
 "function to toggle between relative and absolute numbering
 function! NumberToggle()
@@ -130,6 +136,14 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " Map <leader>sv to source the vimrc file 
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+nnoremap <leader>r yiw:%s/<c-r>"/
+
+" Allow saving of files as sudo when I forgot to start vim using sudo
+cnoremap w!! w !sudo tee >/dev/null %
+
+" Allow typos for writing
+cnoremap W w
+cnoremap Q q
 " }}}
 
 " 18. Reading and Writing Files {{{
