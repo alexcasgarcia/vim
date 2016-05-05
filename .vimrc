@@ -23,7 +23,8 @@ set nostartofline
 " }}}
 
 " 4. Displaying Text {{{
-set number                      " Display line numbers on the left
+set number
+set relativenumber                      " Display line numbers on the left
 " Set the command window height to 2 lines, to avoid many cases of having to
 "  press <Enter> to continue"
 set cmdheight=2
